@@ -171,7 +171,8 @@ In `app.js` call `app.config(function($routeProvider))`. AngularJS provides `$ro
   * options are `controller`, `templateUrl` or `redirectTo`
 
 e.g.
-```app.config(function($routeProvider) {
+```
+app.config(function($routeProvider) {
 	$routeProvider
   	.when('/', {
     	controller: 'HomeController',
