@@ -17,7 +17,7 @@ Within the body tag, we add an attribute `ng-app` which is a *directive*.
 (assuming the ng-[entry var name] = "[name of the app]" e.g. ng-app = "MyApp").
 The body tag becomes the *scope* of the application.
 
-Within a _nested_ div, we add an attribute `ng-controller` (assuming the nesting matters) a nested *directive*
+Within a _nested_ div, we add an attribute `ng-controller` a nested *directive*
 This means properties attached to $scope in the controller are available in this div through an *expression* e.g. `{{ titile }}`
 
 
@@ -182,4 +182,4 @@ e.g.
     });
 });
 ```
-In the example, the `HomeController` uses the `photo` service to retrieve json, which is used by the `home.html` template 
+In the example, the `HomeController` uses the `photo` service to retrieve json, which is used by the `home.html` template
