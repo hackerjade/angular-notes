@@ -58,6 +58,7 @@ Directives are a powerful way to create self-contained, interactive components. 
 * `ng-src` - in place of `img src`
 * `ng-click` - takes a function name as a string, passing in $index?
     `ng-click` can modify scope directly from the controller or through a custom directive link
+* `ng-view` - is replaces with routes template
 * `app-info` - custom directive
 
 ## Overview
@@ -147,3 +148,38 @@ Combining `ng-repeat` and custom directives
   </div>
 </div>
 ```
+
+# Services
+`app.factory` creates a new service. `factory` takes two arguments:
+* service name
+* dependencies - array containing built-in `$http` and `function($http)`
+  `$http` has methods `get`, `succes` and `error.`
+
+In the `MainController`, add the service (by name) as a dependency.  From within the controller, call `[service name].success(funct)` to modify the `$scope`
+
+*Why are services useful?*
+ Instead of filling the controller with code to fetch weather data from a server, it's better to move this independent logic into a service so that it can be reused by other parts of the app.
+
+*What can we generalize so far?*
+
+Directives are a way to make standalone UI components, like `<app-info>`
+Services are a way to make standalone communication logic, like `forecast` which fetches weather data from a server
+
+# Routing
+In `app.js` call `app.config(function($routeProvider))`. AngularJS provides `$routeProvider`to define the app routes.
+`$routeProvider` has methods `when(url, options)` and `otherwise(options)`
+  * options are `controller`, `templateUrl` or `redirectTo`
+
+e.g.
+```app.config(function($routeProvider) {
+	$routeProvider
+  	.when('/', {
+    	controller: 'HomeController',
+      templateUrl: 'views/home.html'
+    })
+  	.otherwise({
+    	redirectTo: '/'
+    });
+});
+```
+In the example, the `HomeController` uses the `photo` service to retrieve json, which is used by the `home.html` template 
